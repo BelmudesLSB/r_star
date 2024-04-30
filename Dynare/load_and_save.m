@@ -1,7 +1,7 @@
 clear all
 clc
 
-full_sample = false;
+full_sample = true;
 
 % Specify the file name
 file_name_FFR = 'FEDFUNDS.xls';  
@@ -80,7 +80,7 @@ if full_sample
     % Add labels and title
     xlabel('Time');
     ylabel('Smoothed efficient real rate');
-    saveas(gcf, 'r_star_full_sample.pdf');
+    saveas(gcf, 'r_star_full_sample.png');
 else
 
     start_year = 1987;
@@ -114,5 +114,5 @@ else
     % Add labels and title
     xlabel('Time');
     ylabel('Smoothed efficient real rate');
-    saveas(gcf, 'r_star_benchmark.pdf');
+    saveas(gcf, 'r_star_benchmark.png');
 end
