@@ -1,24 +1,10 @@
-function residual = static_resid(T, y, x, params, T_flag)
-% function residual = static_resid(T, y, x, params, T_flag)
-%
-% File created by Dynare Preprocessor from .mod file
-%
-% Inputs:
-%   T         [#temp variables by 1]  double   vector of temporary terms to be filled by function
-%   y         [M_.endo_nbr by 1]      double   vector of endogenous variables in declaration order
-%   x         [M_.exo_nbr by 1]       double   vector of exogenous variables in declaration order
-%   params    [M_.param_nbr by 1]     double   vector of parameter values in declaration order
-%                                              to evaluate the model
-%   T_flag    boolean                 boolean  flag saying whether or not to calculate temporary terms
-%
-% Output:
-%   residual
-%
-
-if T_flag
-    T = rstar_afe_forecast.static_resid_tt(T, y, x, params);
+function [residual, T_order, T] = static_resid(y, x, params, T_order, T)
+if nargin < 5
+    T_order = -1;
+    T = NaN(4, 1);
 end
-residual = zeros(16, 1);
+[T_order, T] = rstar_afe_forecast.sparse.static_resid_tt(y, x, params, T_order, T);
+residual = NaN(16, 1);
     residual(1) = (y(14)) - (params(11)+400*y(8));
     residual(2) = (y(15)) - (params(9)+400*y(4));
     residual(3) = (y(16)) - (params(9)+params(10)+400*y(6));
@@ -35,5 +21,4 @@ residual = zeros(16, 1);
     residual(14) = (y(9)) - (y(9)*params(12)+params(15)/400*x(3));
     residual(15) = (y(8)) - (y(8)*params(13)+params(16)/400*x(4));
     residual(16) = (y(7)) - (y(7)*params(14)+params(17)/400*x(2));
-
 end

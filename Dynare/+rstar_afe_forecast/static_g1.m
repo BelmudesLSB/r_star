@@ -59,7 +59,5 @@ g1(13,10)=(-((1-params(6))*params(8)/4));
 g1(14,9)=1-params(12);
 g1(15,8)=1-params(13);
 g1(16,7)=1-params(14);
-if ~isreal(g1)
-    g1 = real(g1)+2*imag(g1);
-end
+
 end
