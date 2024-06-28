@@ -1,8 +1,3 @@
-%==========================================================================
-
-% Dynare replication file for Curdia et al. (2015)
-% "Has US Monetary Policy Tracked its Efficient Rate?"
-
 %--------------------------------------------------------------------------
 % Declare variables / parameters
 %--------------------------------------------------------------------------
@@ -41,7 +36,7 @@ beta omega xi eta zeta rho phipi phix pistar ra gammaa
 rhodelta rhogamma rhou sigmadelta sigmagamma sigmau sigmai;
 
 %--------------------------------------------------------------------------
-% Set calibrated parameters and priors for estimated parameters
+% Set calibrated parameters 
 %--------------------------------------------------------------------------
 
 % Calibrated parameters
@@ -146,7 +141,7 @@ steady;
 
 check;
 
-stoch_simul(irf=40,order=1,periods=0,conditional_variance_decomposition=140,nograph,graph_format=pdf);
+stoch_simul(irf=0,order=1,periods=0,conditional_variance_decomposition=[25, 40],graph_format=pdf);
 calib_smoother(datafile=data_EU_gdpd);
 
 
